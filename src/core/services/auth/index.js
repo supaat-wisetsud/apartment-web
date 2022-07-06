@@ -1,6 +1,6 @@
 import axios from "axios";
-import Environment from "src/env";
-import HttpResponse from 'src/core/utils/http_response';
+import Environment from "../../../env";
+import HttpResponse from '../../../core/utils/http_response';
 
 const newAxios = axios.create({
   baseURL: Environment.baseUrl,

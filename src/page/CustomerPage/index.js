@@ -1,7 +1,7 @@
 import { Avatar, Button, Col, Input, Row, Space, Table } from "antd";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import React from "react";
-import MainLayout from "src/components/layout/main";
+import MainLayout from "../../components/layout/main";
 import "./index.scss";
 
 const { Search } = Input;

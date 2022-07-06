@@ -1,5 +1,5 @@
 import React from "react";
-import MainLayout from "src/components/layout/main";
+import MainLayout from "../../components/layout/main";
 
 const RoomPageID = () => {
     return (
