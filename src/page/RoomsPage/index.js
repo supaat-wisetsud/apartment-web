@@ -2,6 +2,7 @@ import { ExclamationCircleOutlined, HomeOutlined } from "@ant-design/icons";
 import { Button, Input, Modal, Space } from "antd";
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FilterResults from 'react-filter-search'
 import MainLayout from "../../components/layout/main";
 import roomService from "../../core/services/room";
 import openNotificationWithIcon from "../../core/utils/notification";
@@ -13,6 +14,7 @@ const { confirm } = Modal;
 const RoomPage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     fetchData()
@@ -46,7 +48,7 @@ const RoomPage = () => {
       setData(data);
     }
   };
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => setSearch(value)
 
   const onNavigateCreateRoom = () => {
     navigate('/room/create')
@@ -72,7 +74,7 @@ const RoomPage = () => {
         >
           <Search
             style={{ width: 300 }}
-            placeholder="input search text"
+            placeholder="room, customer name"
             onSearch={onSearch}
             enterButton
           />
@@ -80,11 +82,20 @@ const RoomPage = () => {
             <HomeOutlined /> Create
           </Button>
         </div>
-        <ListRoom 
-          data={data} 
-          onEdit={onEdit}
-          onDelete={onDelete}
+
+        <FilterResults 
+          pick={['name', 'customer.name']}
+          value={search}
+          data={data}
+          renderResults={result => (
+            <ListRoom 
+              data={result} 
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
+          )}
         />
+        
       </Space>
     </MainLayout>
   );

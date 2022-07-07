@@ -5,6 +5,7 @@ import {
   UsergroupAddOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
+import FilterResults from 'react-filter-search'
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import MainLayout from "../../components/layout/main";
 import "./index.scss";
@@ -19,6 +20,7 @@ const { confirm } = Modal;
 const CustomerPage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -119,7 +121,7 @@ const CustomerPage = () => {
   };
 
   const onSearch = (value) => {
-    console.log(value);
+    setSearch(value)
   };
 
   const onCreateCustomer = () => {
@@ -138,7 +140,7 @@ const CustomerPage = () => {
         >
           <Search
             style={{ width: 300 }}
-            placeholder="input search text"
+            placeholder="customer name"
             onSearch={onSearch}
             enterButton
           />
@@ -146,7 +148,14 @@ const CustomerPage = () => {
             <UsergroupAddOutlined /> Create
           </Button>
         </div>
-        <Table columns={columns} dataSource={data} />
+        <FilterResults 
+          pick={['name']}
+          value={search}
+          data={data}
+          renderResults={result => (
+            <Table columns={columns} dataSource={result} />
+          )}
+        />
       </Space>
     </MainLayout>
   );
