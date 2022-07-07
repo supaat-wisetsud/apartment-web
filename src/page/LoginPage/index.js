@@ -5,18 +5,20 @@ import Login from "../../modules/FormLogin";
 import FullLayout from "../../components/layout/full";
 import { useNavigate } from "react-router-dom";
 import authService from "../../core/services/auth";
+import openNotificationWithIcon from "../../core/utils/notification";
 
 const LoginPage = () => {
   let navigate = useNavigate();
   const onFinish = async (values) => {
     const {username, password} = values;
-    try {
-        await authService.login(username, password)
-        navigate("/room", { replace: true });
-    } catch (e) {
-        console.error(e);
+    const {success, error} = await authService.login(username, password)
+
+    if (success) {
+      navigate("/room", { replace: true });
+    } else {
+      console.log(error);
+      openNotificationWithIcon('error', "Loading Is Wrong", error?.message)
     }
-    
   };
 
   const onFinishFailed = (errorInfo) => {

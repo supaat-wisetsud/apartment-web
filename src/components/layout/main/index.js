@@ -39,7 +39,7 @@ const menuItems = [
 const MainLayout = ({ children, openMenuKey = "" }) => {
   let navigate = useNavigate();
 
-  const showDeleteConfirm = () => {
+  const showLogoutConfirm = () => {
     confirm({
       title: "Are you sure logout?",
       icon: <ExclamationCircleOutlined />,
@@ -53,9 +53,6 @@ const MainLayout = ({ children, openMenuKey = "" }) => {
         } catch (e) {
           console.log(e);
         }
-      },
-      onCancel() {
-        console.log("Cancel");
       },
     });
   };
@@ -86,7 +83,7 @@ const MainLayout = ({ children, openMenuKey = "" }) => {
                 Admin
               </Typography.Title>
 
-              <Button danger type="primary" onClick={showDeleteConfirm}>
+              <Button danger type="primary" onClick={showLogoutConfirm}>
                 <LogoutOutlined />
               </Button>
             </Space>

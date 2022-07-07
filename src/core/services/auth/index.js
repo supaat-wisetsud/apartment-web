@@ -22,7 +22,15 @@ const authService = {
             "/api/v1/auth/login",
             data,
         )
-        .then(HttpResponse.success)
+        .then(res => {
+            const { access_token } = res.data || {};
+            authService.setToken(access_token)
+
+            return {
+                success: true,
+                data: res.data
+            }
+        })
         .catch(HttpResponse.error);
     },
     register: async (username, password, name, phoneNo, email) => {
