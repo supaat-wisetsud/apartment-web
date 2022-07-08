@@ -99,8 +99,7 @@ const MainLayout = ({ children, openMenuKey = "" }) => {
               margin: "16px 0",
             }}
           >
-            <Breadcrumb.Item>Customer</Breadcrumb.Item>
-            <Breadcrumb.Item>John Brown</Breadcrumb.Item>
+            <Breadcrumb.Item>Apartment web</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
           {children}
