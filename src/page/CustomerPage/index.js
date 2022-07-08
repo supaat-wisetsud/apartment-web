@@ -34,7 +34,7 @@ const CustomerPage = () => {
       okType: "danger",
       cancelText: "No",
       onOk: async () => {
-        const { success, error } = await customerService.remove(id);
+        const { success, error } = await customerService.destory(id);
 
         if (!success) {
           openNotificationWithIcon("error", "Delete customer", error?.message);

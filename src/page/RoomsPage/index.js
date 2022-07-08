@@ -28,7 +28,7 @@ const RoomPage = () => {
       okType: "danger",
       cancelText: "No",
       onOk: async () => {
-        const { success, error } = await roomService.remove(id);
+        const { success, error } = await roomService.destory(id);
 
         if (!success) {
           openNotificationWithIcon("error", "Delete room", error?.message);
