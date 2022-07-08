@@ -40,9 +40,9 @@ const RoomUpdatePageID = () => {
     const { id } = params || {};
     const { success, data, error } = await roomService.update(values, id);
     if (!success) {
-      openNotificationWithIcon("error", "Create customer", error?.message);
+      openNotificationWithIcon("error", "Update room", error?.message);
     } else {
-      openNotificationWithIcon("success", "Create customer", data.message);
+      openNotificationWithIcon("success", "Update room", data.message);
     }
   };
 

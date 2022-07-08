@@ -22,9 +22,9 @@ const RoomCreatePage = () => {
   const onFinish = async (values) => {
     const {success, data, error} = await roomService.create(values)
     if (!success) {
-      openNotificationWithIcon("error", "Create customer", error?.message);
+      openNotificationWithIcon("error", "Create room", error?.message);
     } else {
-      openNotificationWithIcon("success", "Create customer", data.message);
+      openNotificationWithIcon("success", "Create room", data.message);
     }
   };
   return (

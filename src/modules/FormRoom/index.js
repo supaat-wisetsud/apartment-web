@@ -56,7 +56,7 @@ const FormRoom = ({
             </Upload>
             {type === "CREATE" && (
               <Typography.Text type="danger" style={{ marginTop: 20 }}>
-                * คุณสามารถอัพโหลดโปรไฟล์ได้ก็ต่อเมื่อสร้างลูกค้าแล้ว
+                * คุณสามารถอัพโหลดโปรไฟล์ได้ก็ต่อเมื่อสร้างห้องแล้ว
               </Typography.Text>
             )}
           </div>
