@@ -38,17 +38,7 @@ const roomService = {
       .then(HttpResponse.success)
       .catch(HttpResponse.error);
   },
-  update: async (name, customerID, active, id) => {
-    let data = {};
-    if (name) {
-      data = { ...data, name };
-    }
-    if (customerID) {
-      data = { ...data, customer_id: customerID };
-    }
-    if (active) {
-      data = { ...data, active };
-    }
+  update: async (data, id) => {
     return await newAxios
       .put(`/api/v1/room/${id}`, data, {
         headers: {

@@ -37,7 +37,8 @@ const RoomUpdatePageID = () => {
   }, []);
   
   const onFinish = async (values) => {
-    const { success, data, error } = await roomService.update(values);
+    const { id } = params || {};
+    const { success, data, error } = await roomService.update(values, id);
     if (!success) {
       openNotificationWithIcon("error", "Create customer", error?.message);
     } else {
