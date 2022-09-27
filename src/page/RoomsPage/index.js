@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FilterResults from 'react-filter-search'
 import MainLayout from "../../components/layout/main";
 import roomService from "../../core/services/room";
+import logsService from "../../core/services/logs";
 import openNotificationWithIcon from "../../core/utils/notification";
 import ListRoom from "../../modules/ListRoom";
 import "./index.scss";
@@ -62,6 +63,15 @@ const RoomPage = () => {
     showDeleteConfirm(id)
   }
 
+  const onCheckOut = async (customerID, roomID) => {
+    const { success, data, error } = await logsService.create(customerID, roomID)
+    if (!success) {
+      openNotificationWithIcon("error", "Check out faild", error?.message);
+    } else { 
+      openNotificationWithIcon("success", "Check out success", data?.message);
+      await fetchData()
+    }
+  }
   return (
     <MainLayout openMenuKey="room">
       <Space direction="vertical" size={15} style={{ width: "100%" }}>
@@ -92,6 +102,7 @@ const RoomPage = () => {
               data={result} 
               onEdit={onEdit}
               onDelete={onDelete}
+              onCheckOut={onCheckOut}
             />
           )}
         />

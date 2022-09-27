@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   UserOutlined,
   ExclamationCircleOutlined,
+  ContainerOutlined,
 } from "@ant-design/icons";
 import {
   Avatar,
@@ -33,6 +34,11 @@ const menuItems = [
     key: "customer",
     icon: <TeamOutlined />,
     label: <Link to={"/customer"}>Customer</Link>,
+  }, 
+  {
+    key: "log",
+    icon: <ContainerOutlined />,
+    label: <Link to={"/log"}>Check out log</Link>,
   },
 ];
 

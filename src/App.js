@@ -9,6 +9,7 @@ import CustomerPage from "./page/CustomerPage";
 import CustomerCreatePageID from "./page/CustomerPage/create";
 import CustomerPageID from "./page/CustomerPage/id";
 import LoginPage from "./page/LoginPage";
+import LogPage from "./page/LogPage";
 import RoomPage from "./page/RoomsPage";
 import RoomCreatePage from "./page/RoomsPage/create";
 import RoomUpdatePageID from "./page/RoomsPage/id";
@@ -25,6 +26,8 @@ function App() {
         <Route path="/room" element={<RoomPage />} />
         <Route path="/room/create" element={<RoomCreatePage />} />
         <Route path="/room/update/:id" element={<RoomUpdatePageID />} />
+
+        <Route path="/log" element={<LogPage />} />
         
         <Route path="/login" element={<LoginPage />} />
 

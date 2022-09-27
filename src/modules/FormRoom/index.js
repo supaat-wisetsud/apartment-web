@@ -11,6 +11,7 @@ import {
   Upload,
   Select,
   Radio,
+  InputNumber,
 } from "antd";
 import React, { useEffect, useRef } from "react";
 import "./index.scss";
@@ -81,6 +82,14 @@ const FormRoom = ({
                 rules={[{ required: true, message: "Please input your name!" }]}
               >
                 <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Price"
+                name="price"
+                rules={[{ required: true, message: "Please input your price!" }]}
+              >
+                <InputNumber min={0} style={{width: 200}}  />
               </Form.Item>
 
               <Form.Item label="Customer" name="customer_id">
